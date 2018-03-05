@@ -1,8 +1,6 @@
 import {GenericMarkDef, MarkConfig, VL_ONLY_MARK_CONFIG_PROPERTIES} from '../mark';
 
-export type PartsMixins<P extends string> = {
-  [part in P]?: MarkConfig
-};
+export type PartsMixins<P extends string> = Partial<Record<P, MarkConfig>>;
 
 export function getMarkDefMixins<P extends PartsMixins<any>>(
   markDef: GenericMarkDef<any> & P, part: keyof P, cmarkConfig: P

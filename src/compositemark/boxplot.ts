@@ -26,11 +26,7 @@ const BOXPLOT_PART_INDEX: Flag<BoxPlotPart> = {
 
 export const BOXPLOT_PARTS = keys(BOXPLOT_PART_INDEX);
 
-// TODO: Currently can't use `PartsMixins<BoxPlotPart>`
-// as the schema generator will fail
-export type BoxPlotPartsMixins = {
-  [part in BoxPlotPart]?: MarkConfig
-};
+export type BoxPlotPartsMixins = Partial<Record<BoxPlotPart, MarkConfig>>;
 
 export interface BoxPlotConfig extends BoxPlotPartsMixins {
   /** Size of the box and mid tick of a box plot */
