@@ -44,7 +44,7 @@ Alternatively, you can use box plot's mark definition object, which supports the
 
 Besides the properties listed above, `box`, `median`, `whisker` can be used to specifying the underlying mark properties for different parts of the box plots as well.
 
-### Types of Box Plot
+## Types of Box Plot
 {:#boxplot-types}
 
 Vega-Lite supports two types of box plots, defined by the `extent` property in the mark definition object.
@@ -75,7 +75,7 @@ If `extent` is not specified, this type of box plot will be used. Thus, we can j
 ```
 <div class="vl-example" data-name="boxplot_minmax_2D_horizontal"></div>
 
-### Dimension & Orientation
+## Dimension & Orientation
 There are two `boxplot` dimensions:
 
 1) 1D `boxplot` are used to see the distribution of a continuous field.
@@ -98,9 +98,7 @@ Similarly, if the continuous field is on the y axis, the box plot will be vertic
 
 <div class="vl-example" data-name="boxplot_tukey_2D_vertical"></div>
 
-### Customizing Box Plots
-
-#### Color, Size, and Opacity Encoding Channels
+## Color, Size, and Opacity Encoding Channels
 
 You can customize the color, size, and opacity of the box in the `boxplot` by using the `color`, `size`, and `opacity` [encoding channels](encoding.html#channels). `color` and `size` are applied to only the box and median tick whereas `opacity` is applied to the whole `boxplot`.
 
@@ -109,7 +107,7 @@ An example of a `boxplot` where the `size` encoding channel is specified.
 
 <div class="vl-example" data-name="boxplot_minmax_2D_horizontal_color_size"></div>
 
-#### Role Config
+## Role Config
 
 To customize different parts of the box, we can use roles config to customize different parts of the box plot (`box`, `median`, `whisker`).
 
@@ -133,7 +131,7 @@ __Note:__ `aggregate` property of the continuous field is implicitly `boxplot`.
 For example, [a basic 1D boxplot shown above](#boxplot-type) is equivalent to:
 <div class="vl-example" data-name="boxplot_tukey_2D_vertical_explicit_aggregate"></div>
 
-#### Mark Config
+## Mark Config
 {: .suppress-error}
 ```json
 {
