@@ -16,10 +16,9 @@ permalink: /docs/boxplot.html
 }
 ```
 
-`boxplot` composite mark represents a [box plot](https://en.wikipedia.org/wiki/Box_plot). The median tick in the box represents the median. The lower and upper part of the box represents the first and third quartile respectively. The ends of the whiskers can represent several possible alternative values, depending on the [`extent`](#boxplot-types) property.
+A box plot summarizes a distribution of quantitative values using a set of summary statistics.  The median tick in the box represents the median. The lower and upper part of the box represents the first and third quartile respectively. The ends of the whiskers can represent multiple, depending on the type of box plots (#boxplot-types).
 
-`boxplot` is important because it effectively and quickly shows a summary of data with a five-number summary (lower and upper parts of the box, median tick in the box, and the lower and upper whiskers). It is a great visualization choice to indicate whether the distribution is skewed.
-<!-- TODO: Ideally we should have an annotated figure for this, but let's not do it for now-->
+To create a box plot, you can set `mark` to `"boxplot"`.
 
 ## Documentation Overview
 {:.no_toc}
@@ -27,7 +26,7 @@ permalink: /docs/boxplot.html
 - TOC
 {:toc}
 
-To create a box plot, you can set `mark` to `"boxplot"`:
+
 
 {: .suppress-error}
 ```json
@@ -38,50 +37,43 @@ To create a box plot, you can set `mark` to `"boxplot"`:
 }
 ```
 
-Alternatively, you can use box plot's mark definition object, which supports the following properties:
+{:#properties}
+## BoxPlot Mark Properties
+
+A boxplot's mark definition contain the following properties:
 
 {% include table.html props="type,extent,orient,size" source="BoxPlotDef" %}
 
-Besides the properties listed above, `box`, `median`, `whisker` can be used to specifying the underlying mark properties for different parts of the box plots as well.
+Besides the properties listed above, `box`, `median`, `whisker` can be used to specifying the underlying [mark properties](mark.html#mark-def) for different [parts of the box plots](#parts) as well.
 
 ## Types of Box Plot
 {:#boxplot-types}
 
 Vega-Lite supports two types of box plots, defined by the `extent` property in the mark definition object.
 
-1) __Tukey Box Plot__, which is the default box plot where the whisker spans from _Q1 - k * IQR_ to _Q3 + k * IQR_ where _Q1_ and _Q3_ are the first and third quartiles while _IQR_ is the interquartile range (_Q3-Q1_). In this type of box plot, you can specify the constant  `k` which is typically `1.5`.
+1) __Tukey Box Plot__, which is the default box plot in Vega-Lite. For a tukey box plot, the whisker spans from _Q1 - k * IQR_ to _Q3 + k * IQR_ where _Q1_ and _Q3_ are the first and third quartiles while _IQR_ is the interquartile range (_Q3-Q1_). In this type of box plot, you can specify the constant _k_ by setting the `extent`.
 
-```json
-"mark": {
-  "type": "boxplot",
-  "extent": 1.5
-}
-```
-
-<div class="vl-example" data-name="boxplot_tukey_2D_horizontal_IQR"></div>
-
-If `extent` is not specified, this type of box plot will be used. Thus, we can just set the `mark` to `"boxplot"`:
+By default, the extent is `1.5`.
 
 <div class="vl-example" data-name="boxplot_tukey_1D_horizontal"></div>
 
+Explicitly setting `extent` to `1.5` produce an identical plot.
+
+<!-- TODO: please add another plot that's eq-->
+
+
+
 2) __`min-max` Box Plot__, which is a box plot where lower and upper whiskers are defined as the min and max respectively.
 
-{: .suppress-error}
-```json
-"mark": {
-  "type": "boxplot",
-  "extent": "min-max"
-}
-```
 <div class="vl-example" data-name="boxplot_minmax_2D_horizontal"></div>
 
 ## Dimension & Orientation
 There are two `boxplot` dimensions:
 
-1) 1D `boxplot` are used to see the distribution of a continuous field.
+1) A 1D `boxplot` shows the distribution of a continuous field.
 <div class="vl-example" data-name="boxplot_tukey_1D_horizontal"></div>
 
-2) 2D `boxplot` are used to see the distribution of a continuous field, broken down by categories.
+2) A 2D `boxplot` shows the distribution of a continuous field, broken down by categories.
 <div class="vl-example" data-name="boxplot_tukey_2D_horizontal_IQR"></div>
 
 Box plot's orientation is automatically determined by the continuous field axis.
@@ -107,25 +99,18 @@ An example of a `boxplot` where the `size` encoding channel is specified.
 
 <div class="vl-example" data-name="boxplot_minmax_2D_horizontal_color_size"></div>
 
-## Role Config
+{:#parts}
+## Parts of Box Plots
+
+Under the hood, the `"boxplot"` mark is a composite mark that expands into a layered plot.  For example, [a basic 1D boxplot shown above](#boxplot-type) is expanded to:
+
+<div class="vl-example" data-name="normalized/boxplot_tukey_1D_horizontal_normalized"></div>
 
 To customize different parts of the box, we can use roles config to customize different parts of the box plot (`box`, `median`, `whisker`).
 
-{: .suppress-error}
-```json
-{
-  "config": {
-    "box": ...,
-    "median": ...,
-    "whisker": ...
-  }
-}
-```
-<div class="vl-example" data-name="boxplot_minmax_2D_horizontal_custom_midtick_color"></div>
 
-These are possible because under the hood, the `"boxplot"` mark is a macro that expands into a layered plot.  For example, [a basic 1D boxplot shown above](#boxplot-type) is expanded to:
+<!-- TODO: please add example to customize plots via mark definition block -->
 
-<div class="vl-example" data-name="normalized/boxplot_tukey_1D_horizontal"></div>
 
 __Note:__ `aggregate` property of the continuous field is implicitly `boxplot`.
 For example, [a basic 1D boxplot shown above](#boxplot-type) is equivalent to:
@@ -144,5 +129,7 @@ For example, [a basic 1D boxplot shown above](#boxplot-type) is equivalent to:
   }
 }
 ```
-The `boxplot` config object sets the default properties for `boxplot` composite marks.
+The `boxplot` config object sets the default properties for `boxplot` marks.
+
+The boxplot config can contain the following [boxplot mark properties](#properties): `size`, `extent`, `box`, `median`, `whisker`.
 
