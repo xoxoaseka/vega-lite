@@ -4,7 +4,8 @@
   "data": {"url": "data/population.json"},
   "mark": {
     "type": "boxplot",
-    "extent": 1.5
+    "extent": 1.5,
+    "median": {"color": "red"}
   },
   "encoding": {
     "x": {"field": "age","type": "ordinal"},

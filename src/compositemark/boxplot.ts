@@ -41,13 +41,15 @@ export interface BoxPlotConfig extends BoxPlotPartsMixins {
    * - `"min-max": min and max are the lower and upper whiskers respectively.
    * - A number representing multiple of the interquartile range (Q3-Q1).  This number will be multiplied by the IQR. the product will be added to the third quartile to get the upper whisker and subtracted from the first quartile to get the lower whisker.
    *
-   * __Default value:__ `"1.5"`.
+   * __Default value:__ `1.5`.
    */
   extent?: 'min-max' | number;
 }
 export interface BoxPlotDef extends GenericMarkDef<BoxPlot>, BoxPlotConfig {
   /**
    * Orientation of the box plot.  This is normally automatically determined based on types of fields on x and y channels. However, an explicit `orient` be specified when the orientation is ambiguous.
+   *
+   * __Default value:__ `"vertical"`.
    */
   orient?: Orient;
 }
