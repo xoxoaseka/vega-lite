@@ -116,13 +116,14 @@ export type WindowOnlyOp =
 
 export interface WindowFieldDef {
   /**
-   * The window or aggregation operations to apply within a window, including `rank`, `lead`, `sum`, `average` or `count`. See the list of supported operations here:
-   *   https://vega.github.io/vega-lite/docs/transforms/window.html
+   * The window or aggregation operations to apply within a window, including `rank`, `lead`, `sum`, `average` or `count`. See the list of all supported operations [here](https://vega.github.io/vega-lite/docs/transforms/window.html).
    */
   op: AggregateOp | WindowOnlyOp;
 
   /**
-   *  Please refer to the operation/parameter table. Parameter values for the window functions. Parameter value can be omitted for operations that do not accept a parameter. The spec will be invalid if any function that requires a parameter is unspecified.
+   *  Parameter values for the window functions. Parameter values can be omitted for operations that do not accept a parameter.
+   *
+   * See the list of all supported operations and their parameters [here](https://vega.github.io/vega-lite/docs/transforms/window.html).
    */
   param?: number;
 
@@ -153,7 +154,7 @@ export interface WindowTransform {
   /**
    * Indicates if the sliding window frame should ignore peer values. (Peer values are those considered identical by the sort criteria). The default is false, causing the window frame to expand to include all peer values. If set to true, the window frame will be defined by offset values only. This setting only affects those operations that depend on the window frame, namely aggregation operations and the first_value, last_value, and nth_value window operations.
    *
-   * __Default value:__ `false'
+   * __Default value:__ `false`
    */
   ignorePeers?: boolean;
 
