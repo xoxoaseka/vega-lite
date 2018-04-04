@@ -25,3 +25,4 @@ build/*
 !build/vega-lite-schema.json
 .jekyll-metadata
 .nyc_output/*
+.rpt2_cache
