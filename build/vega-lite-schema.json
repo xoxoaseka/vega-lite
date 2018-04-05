@@ -2161,7 +2161,7 @@
               "$ref": "#/definitions/ErrorBarCenterMarkType"
             }
           ],
-          "description": "The shape of the mean point. Available options include:\n- `\"none\": no center point\n- `\"point\": point.\n- `\"circle\": circle.\n- `\"square\": square. // will implement it later.\n- `\"bar\": bar.\n- `\"line\": line.\n\n__Default value:__ `\"point\"`."
+          "description": "The shape of the mean point. Available options include:\n- `\"none\": no center point\n- `\"point\": point.\n- `\"circle\": circle.\n- `\"square\": square. // will implement it later.\n- `\"bar\": bar.\n- `\"line\": line.\n\n__Default value:__ `\"none\"`."
         },
         "extent": {
           "$ref": "#/definitions/ErrorBarExtent",
@@ -2195,7 +2195,7 @@
               "$ref": "#/definitions/ErrorBarCenterMarkType"
             }
           ],
-          "description": "The shape of the mean point. Available options include:\n- `\"none\": no center point\n- `\"point\": point.\n- `\"circle\": circle.\n- `\"square\": square. // will implement it later.\n- `\"bar\": bar.\n- `\"line\": line.\n\n__Default value:__ `\"point\"`."
+          "description": "The shape of the mean point. Available options include:\n- `\"none\": no center point\n- `\"point\": point.\n- `\"circle\": circle.\n- `\"square\": square. // will implement it later.\n- `\"bar\": bar.\n- `\"line\": line.\n\n__Default value:__ `\"none\"`."
         },
         "extent": {
           "$ref": "#/definitions/ErrorBarExtent",
