@@ -82,7 +82,7 @@ export interface MarkConfig extends VgMarkConfig {
   color?: string;
 }
 
-export interface MarkDef extends MarkConfig {
+export interface MarkDef extends BarBinSpacingMixins, MarkConfig {
   /**
    * The mark type.
    * One of `"bar"`, `"circle"`, `"square"`, `"tick"`, `"line"`,
@@ -186,15 +186,19 @@ export interface MarkConfigMixins {
   geoshape?: MarkConfig;
 }
 
-export interface BarConfig extends MarkConfig {
+export interface BarBinSpacingMixins {
   /**
-   * Offset between bar for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
+   * Offset between bars for binned field.  Ideal value for this is either 0 (Preferred by statisticians) or 1 (Vega-Lite Default, D3 example style).
    *
    * __Default value:__ `1`
    *
    * @minimum 0
    */
   binSpacing?: number;
+}
+
+export interface BarConfig extends BarBinSpacingMixins, MarkConfig {
+
   /**
    * The default size of the bars on continuous scales.
    *
