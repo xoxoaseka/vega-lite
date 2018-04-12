@@ -99,4 +99,6 @@ For example, we can use ranged area with the `ci0` and `ci0` [aggregation operat
 
 The `area` property of the top-level [`config`](config.html) object sets the default properties for all area marks.  If [mark property encoding channels](encoding.html#mark-prop) are specified for marks, these config values will be overridden.
 
-The area config can contain any [area mark properties](#properties) (except `type`, `style`, `clip`, and `orient`).
+Besides standard [area mark properties](#properties) (except `type`, `style`, `clip`, and `orient`), the area config can contain the following properties:
+
+{% include table.html props="line,point" source="AreaConfig" %}

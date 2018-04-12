@@ -82,14 +82,7 @@ export interface MarkConfig extends VgMarkConfig {
   color?: string;
 }
 
-export interface MarkDef extends MarkConfig {
-  /**
-   * The mark type.
-   * One of `"bar"`, `"circle"`, `"square"`, `"tick"`, `"line"`,
-   * `"area"`, `"point"`, `"geoshape"`, `"rule"`, and `"text"`.
-   */
-  type: Mark;
-
+export interface MarkProperties extends MarkConfig {
   /**
    *
    * A string or array of strings indicating the name of custom styles to apply to the mark. A style is a named collection of mark property defaults defined within the [style configuration](mark.html#style-config). If style is an array, later styles will override earlier styles. Any [mark properties](encoding.html#mark-prop) explicitly defined within the `encoding` will override a style default.
@@ -103,6 +96,15 @@ export interface MarkDef extends MarkConfig {
    * Whether a mark be clipped to the enclosing group’s width and height.
    */
   clip?: boolean;
+}
+
+export interface MarkDef extends MarkProperties {
+  /**
+   * The mark type.
+   * One of `"bar"`, `"circle"`, `"square"`, `"tick"`, `"line"`,
+   * `"area"`, `"point"`, `"geoshape"`, `"rule"`, and `"text"`.
+   */
+  type: Mark;
 }
 
 /** @hide */
@@ -153,7 +155,7 @@ export interface MarkConfigMixins {
 
   // MARK-SPECIFIC CONFIGS
   /** Area-Specific Config */
-  area?: MarkConfig;
+  area?: AreaConfig;
 
   /** Bar-Specific Config */
   bar?: BarConfig;
@@ -162,7 +164,7 @@ export interface MarkConfigMixins {
   circle?: MarkConfig;
 
   /** Line-Specific Config */
-  line?: MarkConfig;
+  line?: LineConfig;
 
   /** Point-Specific Config */
   point?: MarkConfig;
@@ -210,6 +212,37 @@ export interface BarConfig extends MarkConfig {
    * @minimum 0
    */
   discreteBandSize?: number;
+}
+
+export interface LineConfig extends MarkConfig {
+  /**
+   * Properties of points that can be automatically overlayed on top of line marks.
+   * If this value is an empty object (`{}`), filled points with default properties will be used.
+   * If this value if `null`, no points would be automatically added to line marks.
+   *
+   * __Default value:__ `null`.
+   */
+  point?: MarkProperties;
+}
+
+export interface AreaConfig extends MarkConfig {
+  /**
+   * Properties of points that can be automatically overlayed on top of area marks.
+   * If this value is an empty object (`{}`), filled points with default properties will be used.
+   * If this value if `null`, no points would be automatically added to area marks.
+   *
+   * __Default value:__ `null`.
+   */
+  point?: MarkProperties;
+
+  /**
+   * Properties of lines that can be automatically overlayed on top of area marks.
+   * If this value is an empty object (`{}`), lines with default properties will be used.
+   * If this value if `null`, no lines would be automatically added to area marks.
+   *
+   * __Default value:__ `null`.
+   */
+  line?: MarkProperties;
 }
 
 export const defaultBarConfig: BarConfig = {

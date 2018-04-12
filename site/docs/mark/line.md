@@ -120,4 +120,7 @@ By mapping geographic coordinate data to `longitude` and `latitude` channels of 
 
 The `line` property of the top-level [`config`](config.html) object sets the default properties for all line marks.  If [mark property encoding channels](encoding.html#mark-prop) are specified for marks, these config values will be overridden.
 
-The line config can contain any [line mark properties](#properties) (except `type`, `style`, and `clip`).
+
+Besides standard [line mark properties](#properties) (except `type`, `style`, `clip`, and `orient`), the line config can contain the following properties:
+
+{% include table.html props="point" source="LineConfig" %}
